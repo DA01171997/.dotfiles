@@ -35,3 +35,53 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+if [[ -f "$HOME/.private_aliases" ]]; then
+  . "$HOME/.private_aliases"
+fi
+
+if [[ -f "$HOME/.zsh_aliases" ]]; then
+  . "$HOME/.zsh_aliases"
+fi
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+# nvm end
+
+# pnpm
+export PNPM_HOME="/home/ado/.local/share/pnpm"
+case ":$PATH:" in
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# nvim
+export PATH=$HOME/.local/nvim/bin:$PATH
+# end nvim
+
+# cargo
+. "$HOME/.cargo/env"
+# end cargo
+
+# starship
+eval "$(starship init zsh)"
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+# end starship
+
+# vivid
+export LS_COLORS="$(vivid generate jellybeans)"
+# end vivid
+
+# yazi 
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
+# end yazi
