@@ -1,12 +1,22 @@
 #!/bin/bash
 
+alias commonaliases='vim "$HOME/.common_aliases"'
+alias privatealiases='vim "$HOME/.private_aliases"'
+alias bashrc='vim "$HOME/.bashrc"'
+alias zshrc='vim "$HOME/.zshrc"'
+alias sourcebashrc='source "$HOME/.bashrc"'
+alias sourcezshrc='source "$HOME/.zshrc"'
+
 alias bat='batcat'
 alias f='code $(fzf --preview "batcat --color=always --style=numbers --line-range=:500 {}")'
+
 alias nvimks='NVIM_APPNAME="nvimks" nvim'
 alias nvimlz='NVIM_APPNAME="nvimlz" nvim'
 alias lznvim='nvimlz'
 alias vi='lznvim'
 alias vim='lznvim'
+
 alias cfghostty='vim "$HOME/.config/ghostty/config"'
 alias cfstarship='vim "$STARSHIP_CONFIG"'
-alias cflznvim='vim "$HOME/.config/nvimlz/"'
+alias cflznvim='vim "$HOME/.config/nvimlz"'
+alias cfdotfiles='vim "$HOME/.dotfiles"'
