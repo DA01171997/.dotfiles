@@ -1,0 +1,12 @@
+#!/bin/bash
+
+alias bat='batcat'
+alias f='code $(fzf --preview "batcat --color=always --style=numbers --line-range=:500 {}")'
+alias nvimks='NVIM_APPNAME="nvimks" nvim'
+alias nvimlz='NVIM_APPNAME="nvimlz" nvim'
+alias lznvim='nvimlz'
+alias vi='lznvim'
+alias vim='lznvim'
+alias cfghostty='vim "$HOME/.config/ghostty/config"'
+alias cfstarship='vim "$STARSHIP_CONFIG"'
+alias cflznvim='vim "$HOME/.config/nvimlz/"'

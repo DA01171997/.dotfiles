@@ -36,10 +36,6 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-if [[ -f "$HOME/.private_aliases" ]]; then
-  . "$HOME/.private_aliases"
-fi
-
 if [[ -f "$HOME/.zsh_aliases" ]]; then
   . "$HOME/.zsh_aliases"
 fi
